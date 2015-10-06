@@ -108,7 +108,7 @@ galaxy-admin/update server
 galaxy-admin/update system
 
 # test
-proftpd --config galaxy-admin/system.configured/proftpd.conf -t
+proftpd --config galaxy-admin/configured/system/proftpd.conf -t
 
 # configure sql
 sudo postgresql-setup initdb
