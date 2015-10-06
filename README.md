@@ -194,7 +194,8 @@ Admin unlimited, Extended 1TB, ...)
     * *File format*: gtf/fasta
     * *Copy data into Galaxy?*: Link to files ...
     * File examples (from Ensembl genome builds):
-        ```
+
+```
 # TruSeqAdapters Fastas
 /beegfs/common/genomes/adapters/All.fasta
 # Genome GTFs
