@@ -1,0 +1,6 @@
+configured/*
+credentials*
+!credentials.example
+.DS_Store
+._.DS_Store
+*.swp

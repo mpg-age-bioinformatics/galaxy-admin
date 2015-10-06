@@ -1,0 +1,68 @@
+#!/bin/bash
+
+[[ $_ != $0 ]] && exit
+cd $(dirname $0)
+lib=$(pwd)/lib.sh
+source $lib || exit 65
+
+[[ -z $GA_GROUP ]] && quit "GA_GROUP not defined"
+[[ -z $GA_PREFIX ]] && quit "GA_PREFIX not defined"
+GA_HOME=$GA_PREFIX/galaxy-$GA_VERSION
+[[ ! -d $GA_HOME ]] && quit "could not find server installation at '$GA_HOME'"
+
+CMD=$1
+CMD=${CMD%/}
+
+case $CMD in
+  server)
+    cd configured/server
+    for f in $(find . -type f ! -name "*.swp")
+    do
+      t=$GA_HOME/${f#./}
+      update $f $t
+    done
+    echo "* done"
+    exit
+    ;;
+  shed_tools)
+    cd shed_tools
+    for f in $(find . -type f ! -name "*.swp")
+    do
+      t=$GA_PREFIX/${f#./}
+      [[ ! -f $t ]] && echo "* skipped $f" && continue
+      update $f $t
+    done
+    exit
+    ;;
+  system)
+    echo -n "* checking sudo ... "
+    sudo echo OK || exit 65
+    cd configured/system
+    sudo su -c "source $lib; GA_GROUP=$GA_GROUP \
+      update galaxyd.service /usr/lib/systemd/system/galaxyd.service"
+    sudo su -c "source $lib; GA_GROUP=$GA_GROUP \
+      update httpd.conf /etc/httpd/httpd.conf"
+    sudo su -c "source $lib; GA_GROUP=$GA_GROUP \
+      update postgresql.conf /var/lib/pgsql/data/postgresql.conf"
+    sudo su -c "source $lib; GA_GROUP=$GA_GROUP \
+      update pg_hba.conf /var/lib/pgsql/data/pg_hba.conf"
+    sudo su -c "source $lib; GA_GROUP=$GA_GROUP \
+      update proftpd.conf /etc/proftpd.conf"
+    sudo su -c "source $lib; GA_GROUP=$GA_GROUP \
+      update slurm_drmaa.conf /etc/slurm_drmaa.conf"
+    exit
+    ;;
+  services)
+    for s in httpd postgresql proftpd
+    do
+      echo -n "* restarting $s ... "
+      sudo systemctl restart $s && echo OK
+    done
+    exit
+    ;;
+  *)
+    echo "USAGE: ./$(basename $0) server|system|services|shed_tools"
+    exit
+    ;;
+esac
+

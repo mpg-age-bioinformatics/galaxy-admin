@@ -1,0 +1,14 @@
+#	<unique_build_id>	<dbkey>	<display_name>	<file_base_path>
+
+# Caenorhabiditis elegans
+WBcel235_81	WBcel235_81	Caenorhabditis elegans (WBcel235.81) Bowtie2 Toplevel	/beegfs/common/genomes/caenorhabditis_elegans/WBcel235_81/toplevel_bowtie2/WBcel235.dna.toplevel
+
+# Drosophila melanogaster
+BDGP6_81	BDGP6_81	Drosophila melanogaster (BDGP6.81) Bowtie2 Toplevel	/beegfs/common/genomes/drosophila_melanogaster/BDGP6_81/toplevel_bowtie2/BDGP6.dna.toplevel
+
+# Mus musculus
+GRCm38_81	GRCm38_81	Mus musculus (GRCm38.81) Bowtie2 Toplevel	/beegfs/common/genomes/mus_musculus/GRCm38_81/toplevel_bowtie2/GRCm38.dna.toplevel
+
+# Homo sapiens
+GRCh38_81	GRCh38_81	Homo sapiens (GRCh38.81) Bowtie2 Toplevel	/beegfs/common/genomes/homo_sapiens/GRCh38_81/toplevel_bowtie2/GRCh38.dna.toplevel
+

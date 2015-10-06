@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!-- server/config/data_table_conf.xml -->
+<tables>
+  <!-- Locations of indexes in the Bowtie2 mapper format for TopHat2 to use -->
+  <table name="tophat2_indexes" comment_char="#">
+    <columns>value, dbkey, name, path</columns>
+    <file path="tool-data/bowtie2_indices.loc" />
+    <tool_shed_repository>
+      <tool_shed>toolshed.g2.bx.psu.edu</tool_shed>
+      <repository_name>tophat2</repository_name>
+      <repository_owner>devteam</repository_owner>
+      <installed_changeset_revision>6202ec8aab61</installed_changeset_revision>
+    </tool_shed_repository>
+  </table>
+  <!-- Locations of all fasta files under genome directory -->
+  <table name="all_fasta" comment_char="#">
+    <columns>value, dbkey, name, path</columns>
+    <file path="tool-data/all_fasta.loc" />
+  </table>
+  <!-- Locations of indexes in the Bowtie mapper format -->
+  <table name="bowtie_indexes" comment_char="#">
+    <columns>value, dbkey, name, path</columns>
+    <file path="tool-data/bowtie2_indices.loc" />
+  </table>
+  <!-- Locations of indexes in the BWA mapper format -->
+  <table name="bwa_indexes" comment_char="#">
+    <columns>value, dbkey, name, path</columns>
+    <file path="tool-data/bwa_index.loc" />
+  </table>
+</tables>
+

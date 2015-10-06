@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# USAGE: ./configure CREDENTIALS_FILE
+
+[[ $_ != $0 ]] && exit
+cd $(dirname $0)
+source lib.sh || exit 65
+
+# credential check
+
+echo "* checking credentials"
+VARS="PREFIX VERSION USER UID GROUP GID ADMIN URL IP PORT \
+LDAPKEY LDAPURL_HTTPD LDAPURL_FTPD LDAPUSR LDAPDN LDAPDNUSR LDAPMAIL
+SQLUSER SQLDB SQLKEY"
+for VAR in $VARS
+do
+  eval VAL=\$GA_$VAR
+  [[ -z $VAL ]] && quit "GA_$VAR is not defined"
+  [[ $VAR =~ KEY ]] && VAL="***"
+  echo "    GA_$VAR = $VAL"
+done
+echo "* derivated credentials"
+GA_HOME=$GA_PREFIX/galaxy-$GA_VERSION
+echo "  GA_HOME = $GA_HOME"
+
+# ask continue?
+
+# configure
+
+echo "* configuring"
+rm -rf configured
+for DIR in system server
+do
+  mkdir -p configured/${DIR}
+  cp -r $DIR/* configured/${DIR}/
+done
+VARS="$VARS HOME"
+for file in $(find configured/ -type f ! -name "*.swp" ! -name "*.deprecated")
+do
+  echo -n "  - file $file "
+  for VAR in $VARS
+  do
+    echo -n "."
+    eval VAL=\$GA_$VAR
+    sed -i "s|%%GA_$VAR%%|$VAL|g" $file
+  done
+  echo " OK"
+done
+
+# done
+
+echo "* done"
+

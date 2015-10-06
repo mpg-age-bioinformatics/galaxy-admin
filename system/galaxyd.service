@@ -1,0 +1,22 @@
+# /usr/lib/systemd/system/galaxyd.service
+
+[Unit]
+Description=Galaxy Web Server
+After=httpd.service postgresql.service
+
+[Service]
+Type=forking
+User=%%GA_USER%%
+Group=%%GA_GROUP%%
+PIDfile=%%GA_HOME%%/paster.pid
+ExecStartPre=/usr/bin/rm -f %%GA_HOME%%/paster.pid
+ExecStart=
+ExecStart=/bin/bash %%GA_HOME%%/run.sh --daemon
+ExecReload=/bin/bash %%GA_HOME%%/run.sh restart
+ExecStop=/bin/bash %%GA_HOME%%/run.sh --stop-daemon
+RestartSec=5
+TimeoutStartSec="1min"
+
+[Install]
+WantedBy=multi-user.target
+

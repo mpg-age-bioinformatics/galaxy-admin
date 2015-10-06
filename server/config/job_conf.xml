@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+  <job_conf>
+  <plugins workers="10">
+  	<plugin id="slurm" type="runner" load="galaxy.jobs.runners.slurm:SlurmJobRunner">
+  		<param id="drmaa_library_path">/usr/local/lib/libdrmaa.so</param>
+  	</plugin>
+  </plugins>
+  <handlers default="handlers">
+  	<handler id="main" tags="handlers">
+  		<plugin id="slurm"/>
+  	</handler>
+  </handlers>
+  <!--http://apps.man.poznan.pl/trac/slurm-drmaa/wiki/WikiStart#Nativespecification-->
+  <destinations default="slurm_galaxy">
+  	<destination id="slurm_galaxy" runner="slurm">
+    </destination>
+    <destination id="slurm_galaxy_cpu12" runner="slurm">
+      <param id="nativeSpecification">--ntasks=12</param>
+  	</destination>
+  </destinations>
+  <tools>
+  	<tool id="flexbar" destination="slurm_galaxy_cpu12"/>
+  	<tool id="tophat2" destination="slurm_galaxy_cpu12"/>
+  	<tool id="bowtie2" destination="slurm_galaxy_cpu12"/>
+  	<tool id="bedtools" destination="slurm_galaxy_cpu12"/>
+  	<tool id="picard" destination="slurm_galaxy_cpu12"/>
+  	<tool id="bwa_wrapper" destination="slurm_galaxy_cpu12"/>
+  	<tool id="bwa_color_wrapper" destination="slurm_galaxy_cpu12"/>
+  	<tool id="cufflinks" destination="slurm_galaxy_cpu12"/>
+  	<tool id="cuffdiff" destination="slurm_galaxy_cpu12"/>
+  </tools>
+  <!--
+  <limits>
+  	<limit type="registered_user_concurrent_jobs">8</limit>
+  	<limit type="anonymous_user_concurrent_jobs">1</limit>
+  	<limit type="walltime">72:00:00</limit>
+  	<limit type="output_size">100GB</limit>
+  </limits>
+  -->
+</job_conf>
