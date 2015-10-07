@@ -29,7 +29,7 @@ Run the installation commands from your home folder.
 cd
 ```
 
-### Shell environment
+#### Shell environment
 
 Adjust `~/.bashrc` to load slurm and python `$PATH`, `$LD_LIBRARY_PATH`,
 `$PYTHONHOME`, `$PYTHONUSERBASE` and `$PYTHONPATH`.
@@ -47,7 +47,7 @@ HERE
 source .bashrc
 ```
 
-### galaxy-admin
+#### galaxy-admin
 
 Clone the repository from github, and create credentials file.
 
@@ -74,7 +74,7 @@ Adjust the genome reference indices for the aligner `tophat2` and `bowtie` at
 `galaxy-admin/configured/server/tool-data/bowtie2_indices.loc`. Register more
 tables (e.g. for `bwa`) at `galaxy-admin/configured/server/config/tool_data_table_conf.xml`.
 
-### Sudo
+#### Sudo
 
 Enable `sudo` for the galaxy linux user.
 
@@ -90,7 +90,7 @@ Insert the lines, replace `%%GA_USER%%` with the user id.
 %%GA_USER%% ALL=(ALL) NOPASSWD: /usr/bin/journalctl
 ```
 
-### CentOS packages
+#### CentOS packages
 
 ```
 sudo yum install \
@@ -101,7 +101,7 @@ sudo yum install \
   proftpd proftpd-postgresql proftpd-utils proftpd-ldap proftpd-devel
 ```
 
-### Slurm drmaa
+#### Slurm drmaa
 
 Documentation: http://apps.man.poznan.pl/trac/slurm-drmaa
 
@@ -125,7 +125,7 @@ echo 'echo "Test executed on host $(hostname) by user $USER"' > test.drmaa
 drmaa-run bash test.drmaa
 ```
 
-### PostgreSQL
+#### PostgreSQL
 
 Initialize and create the database and galaxy sql user.
 
@@ -139,7 +139,7 @@ HERE
 "
 ```
 
-### ProFTPd
+#### ProFTPd
 
 Test the proftpd configuration with your credentials.
 
@@ -147,13 +147,13 @@ Test the proftpd configuration with your credentials.
 proftpd --config galaxy-admin/configured/system/proftpd.conf -t
 ```
 
-### Galaxy server
+#### Galaxy server
 
 ```
 curl https://codeload.github.com/galaxyproject/galaxy/tar.gz/v$GA_VERSION | tar xz
 ```
 
-### Update configuration
+#### Update configuration
 
 Backup the original system configuration files.
 
@@ -184,7 +184,7 @@ Start galaxy as service.
 sudo systemctl start galaxyd
 ```
 
-### Galaxy server quotas
+#### Galaxy server quotas
 
 `Admin > Data > Manage quotas`
 
@@ -192,7 +192,7 @@ sudo systemctl start galaxyd
 * Large [3TB]
 * Admin [unlimited]
 
-### Galaxy server tools
+#### Galaxy server tools
 
 `Admin > Tools and tool Shed > Search tool shed`
 
@@ -242,7 +242,7 @@ Category *Seq:DEG*
 * toolshed.g2.bx.psu.edu/repos/devteam/cuffcompare
 * toolshed.g2.bx.psu.edu/repos/devteam/cuffdiff
 
-### Galaxy tool configuration notes
+#### Galaxy tool configuration notes
 
 *toolshed.g2.bx.psu.edu/repos/pcingola/snpeff/snpEff/1.0*
 
@@ -250,12 +250,12 @@ Modify paths in xml files at `shed_tools/toolshed.g2.bx.psu.edu/repos/pcingola/s
 E.g. create `$SNPEFF_JAR_PATH` as reference for the paths.
 
 
-### Galaxy workflows
+#### Galaxy workflows
 
 * [Cloud Map](https://usegalaxy.org/u/gm2123/w/cloudmap-hawaiian-and-variant-discovery-mapping-on-hawaiian-mapped-samples-and-variant-calling-workflow-2-7-2014) ([Guide](https://usegalaxy.org/u/gm2123/p/cloudmap))
 * RNA Seq
 
-### Galaxy genome references
+#### Galaxy genome references
 
 `Admin > Data > Data libraries`
 * Create new library `Genomes`
@@ -289,7 +289,7 @@ Example file list:
 
 ## Maintenance
 
-### PostgreSQL
+#### PostgreSQL
 
 Backup initial database, after server started the first time,
 check the message `serving on http://...` in the galaxy log file.
