@@ -53,9 +53,14 @@ case $CMD in
     exit
     ;;
   services)
+    for s in httpd postgresql proftpd galaxyd
+    do
+      echo "* enabling $s"
+      sudo systemctl enable ${s}.service
+    done
     for s in httpd postgresql proftpd
     do
-      echo -n "* restarting $s ... "
+      echo -n "* (re)starting $s ... "
       sudo systemctl restart $s && echo OK
     done
     exit
