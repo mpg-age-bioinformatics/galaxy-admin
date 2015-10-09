@@ -14,6 +14,7 @@ module purge
 module load slurm
 module load galaxy-python/2.7.9
 module load Java/1.7.0_79
+module load SAMtools/1.2
 
 module load Flexbar/2.5
 #export SNPEFF_JAR_PATH="%%GA_PREFIX%%/shed_tools/toolshed.g2.bx.psu.edu/repos/pcingola/snpeff/c052639fa666/snpeff/snpEff_2_1a/snpEff_2_1a"
