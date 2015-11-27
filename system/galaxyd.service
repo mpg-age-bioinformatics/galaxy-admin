@@ -2,7 +2,8 @@
 
 [Unit]
 Description=Galaxy Web Server
-After=httpd.service postgresql.service
+Requires=httpd.service postgresql.service munge.service
+After=httpd.service postgresql.service munge.service
 
 [Service]
 Type=forking
