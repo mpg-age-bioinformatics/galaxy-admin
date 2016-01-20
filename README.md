@@ -236,6 +236,9 @@ Category *SEQ:Snp*
 * toolshed.g2.bx.psu.edu/repos/devteam/unified_genotyper
 * toolshed.g2.bx.psu.edu/repos/gregory-minevich/snp_mapping_using_wgs
 
+Category *SEQ:deeptools*
+* toolshed.g2.bx.psu.edu/repos/bgruening/deeptools
+
 Category *Seq:DEG*
 * toolshed.g2.bx.psu.edu/repos/devteam/cufflinks
 * toolshed.g2.bx.psu.edu/repos/devteam/cuffmerge
