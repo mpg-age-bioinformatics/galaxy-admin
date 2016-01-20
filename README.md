@@ -47,6 +47,15 @@ HERE
 source .bashrc
 ```
 
+Some python dependencies:
+
+```
+wget https://bootstrap.pypa.io/get-pip.py
+python get-pip.py --no-wheel
+export PATH=$HOME/.local/bin:$PATH
+pip install --user deeptools
+```
+
 #### galaxy-admin
 
 Clone the repository from github, and create credentials file.
