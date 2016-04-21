@@ -16,6 +16,9 @@
     </destination>
     <destination id="slurm_galaxy_cpu12" runner="slurm">
       <param id="nativeSpecification">--ntasks=12</param>
+      <!-- Enable the following line to load environment settings
+           <env file="/path/to/galaxy/config/local_env.sh" /> 
+      -->
   	</destination>
   </destinations>
   <tools>
